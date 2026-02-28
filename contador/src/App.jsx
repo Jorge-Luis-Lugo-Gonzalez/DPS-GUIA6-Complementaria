@@ -6,23 +6,31 @@ import './App.css'
 import VoteList from './components/VoteList'
 
 function App() {
-  const [votes, setVotes] = useState(0)
+   const [options, setOptions] = useState([
+    { name: "React", votes: 0 },
+    { name: "Vue", votes: 0 },
+    { name: "Angular", votes: 0 },
+  ]);
 
-  const handleVote = () => {
-    setVotes(votes + 1)
-  }
+   const vote = (index) => {
+    const newOptions = [...options];
+    newOptions[index].votes += 1;
+    setOptions(newOptions);
+  };
+
+  const resetVotes = () => {
+    const reset = options.map((op) => ({ ...op, votes: 0 }));
+    setOptions(reset);
+  };
 
   return (
     <>
-     <div>
+      <div style={{ padding: "20px" }}>
       <h1>Contador de Votos</h1>
-      <VoteOption name="React"
-        votes={votes}
-        totalVotes={votes}
-        onVote={handleVote}/>
-     </div>
+      <VoteList options={options} vote={vote} resetVotes={resetVotes} />
+    </div>
     </>
-  )
+  );
 }
 
 export default App

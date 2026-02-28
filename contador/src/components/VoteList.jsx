@@ -1,5 +1,5 @@
 import { useState } from "react";
-import VoteOption from "./VoteOption";
+import {VoteOption} from "./VoteOption";
 
 const VoteList = () => {
   const [votes, setVotes] = useState({
@@ -23,23 +23,28 @@ const VoteList = () => {
     });
   };
 
+  const totalVotes = votes.react + votes.vue + votes.angular;
+
   return (
     <div>
       <VoteOption
         name="React"
         votes={votes.react}
+        totalVotes={totalVotes}
         onVote={() => vote("react")}
       />
 
       <VoteOption
         name="Vue"
         votes={votes.vue}
+        totalVotes={totalVotes}
         onVote={() => vote("vue")}
       />
 
       <VoteOption
         name="Angular"
         votes={votes.angular}
+        totalVotes={totalVotes}
         onVote={() => vote("angular")}
       />
 
