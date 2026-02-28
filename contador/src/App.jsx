@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { VoteOption } from './components/VoteOption'
 import './App.css'
+import VoteList from './components/VoteList'
 
 function App() {
   const [votes, setVotes] = useState(0)
